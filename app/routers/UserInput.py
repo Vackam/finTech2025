@@ -36,4 +36,8 @@ async def process_input(
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-
+@InputRouter.post("/test", tags=['input'])
+async def test_input(sleepingTime: str=Form(...), eatingHabits: str=Form(...)):
+    print(sleepingTime, eatingHabits)
+    return {"sleepingTime": sleepingTime, "eatingHabits": eatingHabits}
+     
