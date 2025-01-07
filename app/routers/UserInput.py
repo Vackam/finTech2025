@@ -1,8 +1,9 @@
 # UserInput.py
 
-from fastapi import APIRouter, Form
+from fastapi import APIRouter, Form, HTTPException
 from typing import Annotated
 from pydantic import BaseModel
+import models
 
 class InputData(BaseModel):
     sleepingTime: str
@@ -16,12 +17,23 @@ async def start_input():
     return {"message": "Hello World in userInput"}
 
 @InputRouter.post("/data", tags=['input'])
-async def input(
+async def process_input(
         sleepingTime: str = Form(...),
         eatingHabits: str = Form(...)
         ):
-    data = InputData(
-            sleepingTime = sleepingTime,
-            eatingHabits = eatingHabits
-            )
-    return data
+    # For docs, set like this
+    input_data = {
+            "sleepingTime" : sleepingTime,
+            "eatingHabits" : eatingHabits
+            }
+    # Test Code
+
+    model = models.TestModel()
+    
+    try: 
+        result = model.predict(input_data)
+        return {"result" : result}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
