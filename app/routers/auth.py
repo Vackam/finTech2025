@@ -1,6 +1,7 @@
 # auth.py
 
 from fastapi import APIRouter, Form, HTTPException, Request
+from fastapi.responses import RedirectResponse
 from typing import Annotated
 from pydantic import BaseModel
 
@@ -32,6 +33,8 @@ async def login(
             password: str = Form(...),
         ):
     if username in fake_user_db and fake_user_db[username] == password:
-        return {"return": "인식성공"}
+        # TODO: 일단 메인페이지로 보냄
+        response = RedirectResponse(url="/", status_code=303)
+        return response
     else:
         {"return": "존재하지 않는 유저"}
