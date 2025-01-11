@@ -1,0 +1,176 @@
+@charset "UTF-8";
+
+.bodyClass {
+	background-color: #FFFDEC;
+}
+.wrapper {
+	width: 90%;
+	max-width: 1080px;
+	margin: 0 auto;
+}
+
+p {
+	line-height: 1.6;
+}
+
+header {
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    width: 100%; 
+    height: 100vh; 
+}
+
+header .headerText {
+	z-index: 1;
+}
+
+header .headerText h1 {
+	font-size: 3rem;
+	font-weight: 700;
+	margin: 10px 0;
+	color: #FFcfcf;
+	position: relative;
+	max-width: 1000px;
+	width: 80%;
+}
+
+.problemText {
+	font-size: 1.5rem;	
+	font-weight: 700;
+	margin-left: 100px;
+	margin: 50px;
+	color: #FFe2e2;
+	position: relative;
+	max-width: 1000px;
+	width: 80%;
+}
+
+.problemOne,
+.problemTwo,
+.problemThree,
+.problemFour {
+	width: 100%;
+	height: 350px;
+	margin-bottom: 3%;
+	border-radius: 10px;
+	overflow: hidden;
+}
+
+@media (min-width: 780px) {
+  .firstRow {
+    display: flex; /* 플렉스 컨테이너 */
+    flex-direction: row; /* 가로 정렬 */
+    justify-content: space-between; /* 자식 요소 사이를 균등하게 분배 */
+  }
+}
+
+.firstRow .problemOne {
+	display: flex;
+	background-color: #86A788;
+}
+
+@media (min-width: 780px) {
+	.firstRow .problemOne {
+		width: 60%;
+	}
+}
+
+.firstRow .problemOne img {
+	height: 100%;
+	margin-right: -30px;
+}
+
+
+.firstRow .problemTwo {
+	display: flex;
+	background-color: #86A788;
+}
+
+@media (min-width: 780px) {
+	.firstRow .problemTwo {
+		width: 37%;
+	}
+}
+
+@media (min-width: 780px) {
+  .secondRow {
+    display: flex; /* 플렉스 컨테이너 */
+    flex-direction: row; /* 가로 정렬 */
+    justify-content: space-between; /* 자식 요소 사이를 균등하게 분배 */
+  }
+}
+
+.secondRow .problemThree {
+	display: flex;
+	background-color: #86A788;
+}
+
+@media (min-width: 780px) {
+	.secondRow .problemThree {
+		width: 37%;
+	}
+}
+.secondRow .problemFour {
+	display: flex;
+	background-color: #86A788;
+}
+
+@media (min-width: 780px) {
+	.secondRow .problemFour {
+		width: 60%;
+	}
+}
+
+
+.problemSolvingText h1 {
+	font-size: 3rem;
+	font-weight: 700;
+	margin: 10px 0;
+	color: #FFcfcf;
+	position: relative;
+	max-width: 1000px;
+	width: 80%;
+}
+
+.problemSolving {
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    width: 100%; 
+    height: 70vh; 
+}
+
+button {
+  background-color: #EA4C89;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+button:hover,
+button:focus {
+  background-color: #F082AC;
+}

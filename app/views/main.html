@@ -2,14 +2,129 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>보험추천서비스</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>생활 습관 조사표</title>
+    <style>
+        body {
+            background-color: #FFFDEC;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            display: flex;
+            border: 2px dotted #86A788;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            background-color: #FFFDEC;
+        }
+        .left-section, .right-section {
+            flex: 1;
+            padding: 40px;
+            box-sizing: border-box;
+        }
+        .left-section {
+            background-color: #86A788;
+            color: #FFFDEC;
+        }
+        .left-section h2 {
+            margin-top: 0;
+        }
+        .right-section {
+            background-color: #FFFDEC;
+        }
+        .right-section h2 {
+            color: #86A788;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #86A788;
+            font-weight: bold;
+        }
+        select, input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #86A788;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #86A788;
+            border: none;
+            border-radius: 5px;
+            color: #FFFDEC;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #6d8b6e;
+        }
+        @media (max-width: 600px) {
+            .container {
+                flex-direction: column;
+                border: none;
+                box-shadow: none;
+            }
+            .left-section, .right-section {
+                padding: 20px;
+            }
+            .left-section {
+                border-bottom: 2px dotted #86A788;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>보험추천서비스</h1>
-	<form action="/input/data", method="post">
-		수면시간: <input type="text" name="sleepingTime" value="{{sleepingTime}}"><br>
-	식습관: <input type="text" name="eatingHabits" value="{{eatingHabits}}"><br>
-	<input type="submit">
-	</form>
+    <div class="container">
+        <div class="left-section">
+            <h2>조사 설명</h2>
+            <p>
+                이 조사표는 사용자의 생활 습관을 파악하기 위해 설계되었습니다.
+                수면 시간과 식습관에 대한 정보를 입력해 주시면 보다 맞춤화된 조언을 제공해 드릴 수 있습니다.
+            </p>
+            <p>
+                제공해 주신 정보는 개인의 건강과 웰빙을 향상시키는 데 활용됩니다.
+                정확하고 솔직한 답변 부탁드립니다.
+            </p>
+        </div>
+        <div class="right-section">
+            <h2>생활 습관 입력</h2>
+            <form action="/input/data" method="post">
+                <label for="sleep">수면 시간</label>
+                <select id="sleep" name="sleepingTime" required>
+                    <option value="" disabled selected>선택하세요</option>
+                    <option value="4">4시간</option>
+                    <option value="4.5">4시간 30분</option>
+                    <option value="5">5시간</option>
+                    <option value="5.5">5시간 30분</option>
+                    <option value="6">6시간</option>
+                    <option value="6.5">6시간 30분</option>
+                    <option value="7">7시간</option>
+                    <option value="7.5">7시간 30분</option>
+                    <option value="8">8시간</option>
+                    <option value="8.5">8시간 30분</option>
+                    <option value="9">9시간</option>
+                </select>
+
+                <label for="diet">식습관</label>
+				<input type="text" id="diet" name="eatingHabits" value="{{eatingHabits}}" placeholder="예: 채식, 육식 등" required>
+
+                <input type="submit" value="제출">
+            </form>
+        </div>
+    </div>
 </body>
 </html>
