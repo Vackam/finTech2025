@@ -1,0 +1,9 @@
+joblib @ file:///C:/Users/dev-admin/perseverance-python-buildout/croot/joblib_1729044354027/work
+mkl-service==2.4.0
+mkl_fft @ file:///C:/Users/dev-admin/mkl/mkl_fft_1730824198951/work
+mkl_random @ file:///C:/Users/dev-admin/mkl/mkl_random_1730824302834/work
+numpy @ file:///C:/b/abs_e5jdbgl0q2/croot/numpy_and_numpy_base_1736500458432/work/dist/numpy-2.2.1-cp313-cp313-win_amd64.whl#sha256=e2706328209233cec10663d81098b2ed1cdfdf3633a3fccb95dedbfd4fc8b937
+scipy @ file:///C:/b/abs_5ejjagtvrz/croot/scipy_1737132284367/work/dist/scipy-1.15.1-cp313-cp313-win_amd64.whl#sha256=fe6c280db2a1d566a65517d2352627e4a6e55f97ca2ca4672e58cecc1fb3469b
+setuptools==72.1.0
+wheel==0.44.0
+xgboost @ file:///C:/Users/dev-admin/buildout/croot/xgboost-split_1735864150809/work/python-package
