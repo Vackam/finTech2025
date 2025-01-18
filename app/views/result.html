@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>생활 습관 조사 결과</title>
+    <style>
+        body {
+            background-color: #FFFDEC;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            display: flex;
+            border: 2px dotted #86A788;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            background-color: #FFFDEC;
+        }
+        .left-section, .right-section {
+            flex: 1;
+            padding: 40px;
+            box-sizing: border-box;
+        }
+        .left-section {
+            background-color: #86A788;
+            color: #FFFDEC;
+        }
+        .left-section h2 {
+            margin-top: 0;
+        }
+        .right-section {
+            background-color: #FFFDEC;
+        }
+        .right-section h2 {
+            color: #86A788;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .result {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #333;
+        }
+        .result strong {
+            color: #86A788;
+        }
+        input[type="button"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #86A788;
+            border: none;
+            border-radius: 5px;
+            color: #FFFDEC;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+        input[type="button"]:hover {
+            background-color: #6d8b6e;
+        }
+        @media (max-width: 600px) {
+            .container {
+                flex-direction: column;
+                border: none;
+                box-shadow: none;
+            }
+            .left-section, .right-section {
+                padding: 20px;
+            }
+            .left-section {
+                border-bottom: 2px dotted #86A788;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container" data-aos="fade-up">
+        <div class="left-section">
+            <h2>조사 설명</h2>
+            <p>
+                이 결과는 입력하신 정보를 바탕으로 생성되었습니다.
+                생활 습관 개선을 위한 맞춤형 조언을 제공합니다.
+            </p>
+            <p>
+                더 나은 건강과 웰빙을 위해 생활 습관을 꾸준히 점검하세요.
+            </p>
+        </div>
+        <div class="right-section">
+            <h2>결과 확인</h2>
+            <div class="result">
+				{% if result %}
+					<p> {{ result }}</p>
+				{% endif %}
+				{% if recommend_insurance %}
+					{% for key, value in recommend_insurance.items() %}
+						<li>
+						<strong>추천 보험명:</strong> {{ key }}<br>
+						<strong>추천 이유:</strong> {{ value }}
+						</li>
+					{% endfor %}
+				{% endif %}
+                </p>
+            </div>
+            <input type="button" value="설문 다시 하기" onclick="location.href='/input/form'">
+        </div>
+    </div>
+    <script>
+        AOS.init();
+    </script>
+</body>
+</html>
