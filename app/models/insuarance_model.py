@@ -3,6 +3,7 @@
 import numpy as np
 import joblib
 import os 
+import random
 
 class InsuranceModel:
     def __init__(self):
@@ -66,8 +67,57 @@ class InsuranceModel:
 
         return result_string
 
+class IntegratedInsuranceModel:
+    def __init__(self):
+        self.models = self.load_models()
+        self.disease_dict = {
+            "DE1_dg": "당뇨병",
+            "DI1_dg": "고혈압",
+            "DI2_dg": "고지혈증",
+            "DJ4_dg": "천식",
+            "DJ6_dg": "부비동염",
+            "DJ8_dg": "알레르기 비염",
+            "DL1_dg": "아토피 피부염",
+            "DH4_dg": "중이염",
+            "DN1_dg": "신부전"
+        }
+
+
+    def load_models(self):
+        model_path = os.path.join(os.path.dirname(__file__), '..', 'ml')
+        model_files = [f for f in os.listdir(model_path) if f.endswith(".pkl")]
+        models = {}
+        for model_file in model_files:
+            path = os.path.join(model_path, model_file)
+            model = joblib.load(path)
+
+            base_name = os.path.splitext(model_file)[0]
+            models[base_name] = model
+        return models
+
+    def predict(self, X):
+        predictions = [] 
+        for key, model in self.models.items():
+            prediction = model.predict(X)
+            if prediction == 1:
+                predictions.append(self.disease_dict[key])
+            print(model.predict(X))
+        return predictions
+
+    def print_models(self):
+        print (len(self.models))
+
 if __name__ == "__main__":
+    '''
     a = InsuranceModel()
     print(a.model_path)
     print(a.predict({'a': 1, 'b': 2}))
+    '''
 
+    test_b = IntegratedInsuranceModel()
+    test_b.print_models()
+    test_data = [random.uniform(0,1) for _ in range(26)]
+
+    predictions = test_b.predict([test_data])
+    print("prediction:")
+    print(predictions)
