@@ -4,6 +4,7 @@ from pydantic import BaseModel
 from utils.templates import templates
 from utils.ai_toolkit import get_insurance_model
 import models
+import json
 
 class InputData(BaseModel):
     sleepingTime: str
@@ -58,13 +59,12 @@ async def process_input(
         model = models.IntegratedInsuranceModel()
         result = model.predict([input_data])
 
-        # Uncomment after testing
-        # ai_recommend = get_insurance_model(result)
-        # ai_recommend = json.loads(ai_recommend)
+        ai_recommend = get_insurance_model(result)
+        ai_recommend = json.loads(ai_recommend)
         
         return templates.TemplateResponse(
             name="result.html", 
-            context={"request": request, "result": result, "recommend_insurance": None}  # Replace None with ai_recommend after testing
+            context={"request": request, "result": result, "recommend_insurance": ai_recommend}  # Replace None with ai_recommend after testing
         )
     except ImportError as e:
         raise HTTPException(status_code=500, detail=f"ImportError: {e}")
