@@ -100,15 +100,20 @@
             <h2>결과 확인</h2>
             <div class="result">
 				{% if result %}
-					<p> {{ result }}</p>
-				{% endif %}
-				{% if recommend_insurance %}
-					{% for key, value in recommend_insurance.items() %}
-						<li>
-						<strong>추천 보험명:</strong> {{ key }}<br>
-						<strong>추천 이유:</strong> {{ value }}
-						</li>
+					<strong>고위험군: </strong>
+					{% for disease in result %}
+						{{ disease }}
 					{% endfor %}
+					{% if recommend_insurance %}
+						{% for key, value in recommend_insurance.items() %}
+							<li>
+							<strong>추천 보험명:</strong> {{ key }}<br>
+							<strong>추천 이유:</strong> {{ value }}
+							</li>
+						{% endfor %}
+					{% endif %}
+				{% else %}
+					<p>바람직한 생활습관으로 좋은 삶을 유지하고 계시군요!</p>
 				{% endif %}
                 </p>
             </div>
