@@ -20,6 +20,8 @@ async def start_input():
 @InputRouter.post("/data", tags=['input'])
 async def process_input(
     request: Request,
+    sex: int = Form(...),
+    age: int = Form(...),
     allownc: int = Form(...),
     npins: int = Form(...),
     ec_occp: int = Form(...),
@@ -48,7 +50,7 @@ async def process_input(
     he_dmfh3: int = Form(...),
 ):
     input_data = [
-        allownc, npins, ec_occp, he_obe, bd1_11, bd2_14,
+        age, sex, allownc, npins, ec_occp, he_obe, bd1_11, bd2_14,
         bp16_1, bp16_2, bs3_1, be5_1, he_fh,
         he_hpfh1, he_hpfh2, he_hpfh3, he_hlfh1, he_hlfh2, he_hlfh3,
         he_ihdfh1, he_ihdfh2, he_ihdfh3, he_strfh1, he_strfh2, he_strfh3,
