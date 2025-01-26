@@ -1,0 +1,35 @@
+Database Environment statement
+
+STATEMENT
+
+# 1. Create database
+
+drop database if exists fintech2025;
+create database fintech2025;
+
+# (Optional) Select database
+
+use fintech2025;
+
+# 2. Create Sample Table
+
+create table testUserTable (id char(4), userName char(15), email char(20), birthYear int);
+
+# 3. Create Sample Data in Table
+
+INSERT INTO testUserTable VALUES( 'hong' , '홍지윤' , 'hong@naver.com' , 1996);
+INSERT INTO testUserTable VALUES( 'kim' , '김태연' , 'kim@daum.net', 2011);
+INSERT INTO testUserTable VALUES( 'star' , '별사랑' , 'star@paran.com' , 1990);
+INSERT INTO testUserTable VALUES( 'yang' , '양지은' , 'yang@gmail.com' , 1993);
+
+# 4. Set .env file  
+
+mysql_host = 
+mysql_user = 
+mysql_password = 
+mysql_db = 'fintech2025'
+mysql_charset = 'utf8'
+
+# 5. Run Test Code
+
+python /utils/db_tools.py
